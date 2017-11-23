@@ -5,6 +5,7 @@ theme = "alpenfrisch"
 
 publishDir = "docs"
 
+canonifyURLs = true
 [params]
 description = "Computer engineer, traveler and painter"
 
