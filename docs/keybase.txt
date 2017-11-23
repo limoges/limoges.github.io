@@ -1,0 +1,55 @@
+==================================================================
+https://keybase.io/julienlimoges
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://limoges.io
+  * I am julienlimoges (https://keybase.io/julienlimoges) on keybase.
+  * I have a public key ASCodPRvjohvg8el_ucRf9lBr-9fmKiPFKyBdR16VtG56go
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120a874f46f8e886f83c7a5fee7117fd941afef5f98a88f14ac81751d7a56d1b9ea0a",
+      "host": "keybase.io",
+      "kid": "0120a874f46f8e886f83c7a5fee7117fd941afef5f98a88f14ac81751d7a56d1b9ea0a",
+      "uid": "3f9f044e295080e4d709f80f5d10e419",
+      "username": "julienlimoges"
+    },
+    "merkle_root": {
+      "ctime": 1511438388,
+      "hash": "4e452ae2524ac83b4e9fade95f70d7946df2d95000f6b430b7a97f4fefd87e8bef427a08eb501c55df8bb676b5673d084020d52abad39df5eda96a1709a528f0",
+      "hash_meta": "d36914131cab6e332b778a927261ff1fc7ca57940d4e661ac24c4a32ce4c1a02",
+      "seqno": 1738524
+    },
+    "service": {
+      "hostname": "limoges.io",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "1.0.34"
+  },
+  "ctime": 1511438406,
+  "expire_in": 504576000,
+  "prev": "6b1b190d94db13c5f27728a302ad4520b81b9e06651cafba550728a3333cb253",
+  "seqno": 7,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgqHT0b46Ib4PHpf7nEX/ZQa/vX5iojxSsgXUdelbRueoKp3BheWxvYWTFA0d7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwYTg3NGY0NmY4ZTg4NmY4M2M3YTVmZWU3MTE3ZmQ5NDFhZmVmNWY5OGE4OGYxNGFjODE3NTFkN2E1NmQxYjllYTBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwYTg3NGY0NmY4ZTg4NmY4M2M3YTVmZWU3MTE3ZmQ5NDFhZmVmNWY5OGE4OGYxNGFjODE3NTFkN2E1NmQxYjllYTBhIiwidWlkIjoiM2Y5ZjA0NGUyOTUwODBlNGQ3MDlmODBmNWQxMGU0MTkiLCJ1c2VybmFtZSI6Imp1bGllbmxpbW9nZXMifSwibWVya2xlX3Jvb3QiOnsiY3RpbWUiOjE1MTE0MzgzODgsImhhc2giOiI0ZTQ1MmFlMjUyNGFjODNiNGU5ZmFkZTk1ZjcwZDc5NDZkZjJkOTUwMDBmNmI0MzBiN2E5N2Y0ZmVmZDg3ZThiZWY0MjdhMDhlYjUwMWM1NWRmOGJiNjc2YjU2NzNkMDg0MDIwZDUyYWJhZDM5ZGY1ZWRhOTZhMTcwOWE1MjhmMCIsImhhc2hfbWV0YSI6ImQzNjkxNDEzMWNhYjZlMzMyYjc3OGE5MjcyNjFmZjFmYzdjYTU3OTQwZDRlNjYxYWMyNGM0YTMyY2U0YzFhMDIiLCJzZXFubyI6MTczODUyNH0sInNlcnZpY2UiOnsiaG9zdG5hbWUiOiJsaW1vZ2VzLmlvIiwicHJvdG9jb2wiOiJodHRwczoifSwidHlwZSI6IndlYl9zZXJ2aWNlX2JpbmRpbmciLCJ2ZXJzaW9uIjoxfSwiY2xpZW50Ijp7Im5hbWUiOiJrZXliYXNlLmlvIGdvIGNsaWVudCIsInZlcnNpb24iOiIxLjAuMzQifSwiY3RpbWUiOjE1MTE0Mzg0MDYsImV4cGlyZV9pbiI6NTA0NTc2MDAwLCJwcmV2IjoiNmIxYjE5MGQ5NGRiMTNjNWYyNzcyOGEzMDJhZDQ1MjBiODFiOWUwNjY1MWNhZmJhNTUwNzI4YTMzMzNjYjI1MyIsInNlcW5vIjo3LCJ0YWciOiJzaWduYXR1cmUifaNzaWfEQNeV4hTUJQs8zpax34GAdjnLWEZiYOimKPR7cUWpjf39lAr0I2RASQD13auFItaiv7e/lPwtradJvjiQKVtFvg6oc2lnX3R5cGUgpGhhc2iCpHR5cGUIpXZhbHVlxCDfaFdsudCdH9EdxYYnM7K/O0Tb0DIPdrvW1kBVuaYXH6N0YWfNAgKndmVyc2lvbgE=
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/julienlimoges
+
+==================================================================
