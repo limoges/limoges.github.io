@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://limoges.io/resume/</loc>
+    <lastmod>2017-11-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://limoges.io/</loc>
+    <lastmod>2017-02-05T07:51:49+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://limoges.io/articles/</loc>
+    <lastmod>2017-02-05T07:51:49+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://limoges.io/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

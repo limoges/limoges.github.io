@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Articles on Julien Limoges</title>
+    <link>https://limoges.io/articles/</link>
+    <description>Recent content in Articles on Julien Limoges</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-ca</language>
+    <lastBuildDate>Sun, 05 Feb 2017 07:51:49 +0100</lastBuildDate>
+    
+	<atom:link href="https://limoges.io/articles/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>

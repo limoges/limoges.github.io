@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>About on Julien Limoges</title>
+    <link>https://limoges.io/</link>
+    <description>Recent content in About on Julien Limoges</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-ca</language>
+    <lastBuildDate>Sun, 05 Feb 2017 07:51:49 +0100</lastBuildDate>
+    
+	<atom:link href="https://limoges.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Julien Limoges</title>
+      <link>https://limoges.io/resume/</link>
+      <pubDate>Fri, 10 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://limoges.io/resume/</guid>
+      <description>Resume  julienlimoges@gmail.com +1 438 870 1577 Fluent in french, english and intermediate in German (B1-Level)  Summary An articulate, analytical and focused software engineer with hands-on experience collaborating with people from different backgrounds. I enjoy working with diverse teams in order to produce excellent products while enjoying our time together.
+Skills  Operations: Docker, Kubernetes, Vagrant, AWS, Chef, Capistrano Tools: Git, Jenkins, Travis Development: Golang, Ruby, Rails, Swift, iOS, Objective C, C Database: Mysql, PGsql, Redis, Memcached Performance: Lock-free, CAS, TAS, ABA, LL/SC, gprof, perftools, valgrind  Personal  Quality and result oriented Automation facilitator Straightforward Methodical Curious Challenger Honest  Experiences Software engineer, back-end at Shopify in 2016-2017 Ruby, Rails, Golang, Kafka, Redis, MySQL, Kubernetes, Docker, Capistrano, GCloud, AWS</description>
+    </item>
+    
+  </channel>
+</rss>
