@@ -5,8 +5,6 @@ draft: false
 ---
 
 ## Resume
-- [julienlimoges@gmail.com][mail]
-- +1 438 870 1577
 - Fluent in french, english and intermediate in German (B1-Level)
 
 ### Summary
