@@ -10,7 +10,7 @@ You can find my resume <a href="/resume">here</a>.
 </div>
 
 Hi there! My name is Julien. I'm a computer engineer working in software. I 
-occasionally write on different topics I find interesting. I'm orginally from 
+occasionally write on different topics I find interesting. I'm originally from 
 [Montreal], but have lived in [Vancouver], [Lyon], [Vienna] and [Munich].
 
 I’m currently doing a small amount of freelance work while working on a small 
