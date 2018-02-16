@@ -2,10 +2,11 @@ baseURL = "https://limoges.io"
 languageCode = "en-ca"
 title = "Julien Limoges"
 theme = "alpenfrisch"
-
 publishDir = "docs"
-
 canonifyURLs = true
+copyright = "Julien Limoges"
+
+pygmentsCodeFences = true
 [params]
 description = "Computer engineer, traveler and painter"
 
@@ -16,28 +17,6 @@ description = "Computer engineer, traveler and painter"
   facebook = "https://www.facebook.com/julienlimoges"
   twitter = "https://twitter.com/julienlimoges"
 
-[permalinks]
-blog = "/articles/:year/:month/:title/"
-
 [taxonomies]
 tags = "tags"
 
-[[menu.main]]
-weight = 2
-name = "Articles"
-url = "/#articles"
-
-[[menu.main]]
-weight = 3
-name = "Contact"
-url = "/#contact"
-
-[[menu.main]]
-weight = 3
-name = "Projects"
-url = "/#projects"
-
-[[menu.main]]
-weight = 4
-name = "Resume"
-url = "/resume/"

@@ -6,10 +6,33 @@
     <description>Recent content in Articles on Julien Limoges</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-ca</language>
+    <copyright>Julien Limoges</copyright>
     <lastBuildDate>Sun, 05 Feb 2017 07:51:49 +0100</lastBuildDate>
     
 	<atom:link href="https://limoges.io/articles/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Static code analysis using Go tools</title>
+      <link>https://limoges.io/articles/using-golang-static-analysis/</link>
+      <pubDate>Wed, 23 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://limoges.io/articles/using-golang-static-analysis/</guid>
+      <description>define vet vet | vɛt | verb (vets, vetting, vetted) [with object] - make a careful and critical examination of (something)  If you&amp;rsquo;ve been using Go for a while you might have heard about vet.
+Vet is a pretty interesting tool. For people familiar with gcc based tools, it can be compared to the warnings gcc emits.
+Invoking vet You can technically use go vet, but its interface is awkward for most.</description>
+    </item>
+    
+    <item>
+      <title>What&#39;s that? Can you repeat?</title>
+      <link>https://limoges.io/articles/dont-repeat-yourself/</link>
+      <pubDate>Sat, 12 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://limoges.io/articles/dont-repeat-yourself/</guid>
+      <description>Don&amp;rsquo;t repeat yourself is a pretty popular principle of software development.
+It has (funnily) been repeated, over and over and over again. To the point where it seems to be the most important principle to some software communities.
+Unfortunately, the principle is flawed. It is a good idea to try and group repetitive code. But everything must be done in moderation. Sometimes, DRY just makes it damn more complicated to understand your code.</description>
+    </item>
     
   </channel>
 </rss>
