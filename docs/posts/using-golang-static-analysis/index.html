@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Static code analysis using Go vet</title>
                                                                          
-    <meta name="description" content="Computer engineer, traveler and painter">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
                                                                          
     <link rel="canonical" href="https://limoges.io/posts/using-golang-static-analysis/">
@@ -58,121 +58,121 @@ It you can also list the optional flags using <code>go tool vet --help</code>.</
 <p>Here&rsquo;s a list of what the tool can do:</p>
 
 <h2 id="locks-are-not-passed-by-value-copylocks-a-favourite">Locks are not passed by value (<code>-copylocks</code>) - A favourite.</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#75715e">// Function with a mutex argument
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">GoodLocker</span>(<span style="color:#a6e22e">l</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">Mutex</span>) {}
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">BadLocker</span>(<span style="color:#a6e22e">l</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">Mutex</span>) {} <span style="color:#75715e">// passes lock by value: sync.Mutex
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">// Struct with a mutex field
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Locker1</span> <span style="color:#66d9ef">struct</span> {
-        <span style="color:#a6e22e">l</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">RWMutex</span>
-}
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">l</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Locker1</span>) <span style="color:#a6e22e">GoodMethod</span>() {}
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">l</span> <span style="color:#a6e22e">Locker1</span>) <span style="color:#a6e22e">BadMethod</span>() {} <span style="color:#75715e">// passes lock by value: Locker1 contains sync.RWMutex
-</span><span style="color:#75715e"></span>
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">l</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">Mutex</span>
-        <span style="color:#a6e22e">GoodLocker</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">l</span>)
-        <span style="color:#a6e22e">BadLocker</span>(<span style="color:#a6e22e">l</span>) <span style="color:#75715e">// call of BadLocker copies lock value: sync.Mutex
-</span><span style="color:#75715e"></span>}</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-golang" data-lang="golang"><span class="c1">// Function with a mutex argument
+</span><span class="c1"></span><span class="kd">func</span> <span class="nx">GoodLocker</span><span class="p">(</span><span class="nx">l</span> <span class="o">*</span><span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span><span class="p">)</span> <span class="p">{}</span>
+<span class="kd">func</span> <span class="nx">BadLocker</span><span class="p">(</span><span class="nx">l</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span><span class="p">)</span> <span class="p">{}</span> <span class="c1">// passes lock by value: sync.Mutex
+</span><span class="c1"></span>
+<span class="c1">// Struct with a mutex field
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">Locker1</span> <span class="kd">struct</span> <span class="p">{</span>
+        <span class="nx">l</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">RWMutex</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">l</span> <span class="o">*</span><span class="nx">Locker1</span><span class="p">)</span> <span class="nx">GoodMethod</span><span class="p">()</span> <span class="p">{}</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">l</span> <span class="nx">Locker1</span><span class="p">)</span> <span class="nx">BadMethod</span><span class="p">()</span> <span class="p">{}</span> <span class="c1">// passes lock by value: Locker1 contains sync.RWMutex
+</span><span class="c1"></span>
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">l</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span>
+        <span class="nx">GoodLocker</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">l</span><span class="p">)</span>
+        <span class="nx">BadLocker</span><span class="p">(</span><span class="nx">l</span><span class="p">)</span> <span class="c1">// call of BadLocker copies lock value: sync.Mutex
+</span><span class="c1"></span><span class="p">}</span></code></pre></div>
 <h2 id="useless-assignment-assign">Useless assignment (<code>-assign</code>)</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-        <span style="color:#a6e22e">s</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;hey&#34;</span>
-        <span style="color:#a6e22e">s</span> = <span style="color:#a6e22e">s</span> <span style="color:#75715e">// self-assignment of s to s
-</span><span style="color:#75715e"></span>}</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">s</span> <span class="o">:=</span> <span class="s">&#34;hey&#34;</span>
+        <span class="nx">s</span> <span class="p">=</span> <span class="nx">s</span> <span class="c1">// self-assignment of s to s
+</span><span class="c1"></span><span class="p">}</span></code></pre></div>
 <h2 id="mistaken-sync-atomic-usage-atomic">Mistaken sync/atomic usage (<code>-atomic</code>)</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-        <span style="color:#a6e22e">n</span> <span style="color:#f92672">:=</span> uint64(<span style="color:#ae81ff">0</span>)
-        <span style="color:#a6e22e">n</span> = <span style="color:#a6e22e">atomic</span>.<span style="color:#a6e22e">AddUint64</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">n</span>, <span style="color:#ae81ff">1</span>) <span style="color:#75715e">// direct assignment to atomic value
-</span><span style="color:#75715e"></span>}</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">n</span> <span class="o">:=</span> <span class="nb">uint64</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="nx">n</span> <span class="p">=</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">AddUint64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">// direct assignment to atomic value
+</span><span class="c1"></span><span class="p">}</span></code></pre></div>
 <h2 id="mistakes-involving-boolean-operators-bool">Mistakes involving boolean operators (<code>-bool</code>)</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">j</span> <span style="color:#66d9ef">int</span>
-        <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">i</span> <span style="color:#f92672">!=</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">!=</span> <span style="color:#ae81ff">2</span>           <span style="color:#75715e">// suspect or: i != 10 || i != 2
-</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">i</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>  <span style="color:#75715e">// redundant or: i == 1 || 1 == i
-</span><span style="color:#75715e"></span>}</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="kt">int</span>
+        <span class="nx">_</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">!=</span> <span class="mi">10</span> <span class="o">||</span> <span class="nx">i</span> <span class="o">!=</span> <span class="mi">2</span>           <span class="c1">// suspect or: i != 10 || i != 2
+</span><span class="c1"></span>        <span class="nx">_</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">||</span> <span class="mi">1</span> <span class="o">==</span> <span class="nx">i</span> <span class="o">||</span> <span class="nx">j</span> <span class="o">==</span> <span class="mi">0</span>  <span class="c1">// redundant or: i == 1 || 1 == i
+</span><span class="c1"></span><span class="p">}</span></code></pre></div>
 <h2 id="not-using-key-to-identify-struct-fields-composites">Not using key to identify struct fields (<code>-composites</code>)</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;container/list&#34;</span>
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-        <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">list</span>.<span style="color:#a6e22e">Element</span>{
-                <span style="color:#e6db74">&#34;First&#34;</span>, <span style="color:#75715e">// container/list.Element composite literal uses unkeyed fields
-</span><span style="color:#75715e"></span>        }
-        <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">list</span>.<span style="color:#a6e22e">Element</span>{
-                <span style="color:#a6e22e">Value</span>: <span style="color:#e6db74">&#34;First&#34;</span>,
-        }
-}</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kn">import</span> <span class="s">&#34;container/list&#34;</span>
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">_</span> <span class="p">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">Element</span><span class="p">{</span>
+                <span class="s">&#34;First&#34;</span><span class="p">,</span> <span class="c1">// container/list.Element composite literal uses unkeyed fields
+</span><span class="c1"></span>        <span class="p">}</span>
+        <span class="nx">_</span> <span class="p">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">Element</span><span class="p">{</span>
+                <span class="nx">Value</span><span class="p">:</span> <span class="s">&#34;First&#34;</span><span class="p">,</span>
+        <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 <h2 id="nil-function-comparison-nilfunc">Nil function comparison (<code>-nilfunc</code>)</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">F</span>() {}
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">f</span> = <span style="color:#a6e22e">F</span>
+<div class="highlight"><pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">func</span> <span class="nx">F</span><span class="p">()</span> <span class="p">{}</span>
+<span class="kd">var</span> <span class="nx">f</span> <span class="p">=</span> <span class="nx">F</span>
 
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">f</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
-                <span style="color:#66d9ef">return</span> 
-        }
-        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">F</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> { <span style="color:#75715e">// comparison of function F == nil is always false
-</span><span style="color:#75715e"></span>
-        }
-}</code></pre></div>
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">f</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+                <span class="k">return</span> 
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="nx">F</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span> <span class="c1">// comparison of function F == nil is always false
+</span><span class="c1"></span>
+        <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 <h2 id="printf-invocation-error-printf">Printf invocation error (<code>-printf</code>)</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%s&#34;</span>, <span style="color:#e6db74">&#34;hello&#34;</span>)
-        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%d&#34;</span>, <span style="color:#e6db74">&#34;hello&#34;</span>) <span style="color:#75715e">// arg &#34;hello&#34; for printf verb %d of wrong type: string
-</span><span style="color:#75715e"></span>}</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%s&#34;</span><span class="p">,</span> <span class="s">&#34;hello&#34;</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span> <span class="s">&#34;hello&#34;</span><span class="p">)</span> <span class="c1">// arg &#34;hello&#34; for printf verb %d of wrong type: string
+</span><span class="c1"></span><span class="p">}</span></code></pre></div>
 <h2 id="unsafe-concurrent-access-of-range-variables-rangeloops">Unsafe concurrent access of range variables (<code>-rangeloops</code>)</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-        <span style="color:#a6e22e">s</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">22</span>, <span style="color:#ae81ff">33</span>, <span style="color:#ae81ff">44</span>, <span style="color:#ae81ff">55</span>, <span style="color:#ae81ff">66</span>}
-        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">s</span> {
-                <span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
-                        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;bad %d\n&#34;</span>, <span style="color:#a6e22e">i</span>) <span style="color:#75715e">// range variable i captured by func literal
-</span><span style="color:#75715e"></span>                }
-        }
-        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">s</span> {
-                <span style="color:#75715e">// Correct usage
-</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">i</span> <span style="color:#66d9ef">int</span>) {
-                        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;good %d\n&#34;</span>, <span style="color:#a6e22e">i</span>)
-                }(<span style="color:#a6e22e">i</span>)
-        }
-}</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">s</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">66</span><span class="p">}</span>
+        <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">s</span> <span class="p">{</span>
+                <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+                        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;bad %d\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="c1">// range variable i captured by func literal
+</span><span class="c1"></span>                <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">s</span> <span class="p">{</span>
+                <span class="c1">// Correct usage
+</span><span class="c1"></span>                <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">i</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;good %d\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+                <span class="p">}(</span><span class="nx">i</span><span class="p">)</span>
+        <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 <h2 id="variable-shadowing-shadow-not-active-by-default">Variable shadowing (<code>-shadow</code>). Not active by default</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">example</span>(<span style="color:#a6e22e">w</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">Writer</span>, <span style="color:#a6e22e">buf</span> <span style="color:#a6e22e">bytes</span>.<span style="color:#a6e22e">Buffer</span>) (<span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>) {
-        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">buf</span>.<span style="color:#a6e22e">Len</span>() &gt; <span style="color:#ae81ff">0</span> {
-                <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">buf</span>.<span style="color:#a6e22e">ReadByte</span>()
-                <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-                        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span> <span style="color:#75715e">// declaration of &#34;err&#34; shadows declaration...
-</span><span style="color:#75715e"></span>                }
-        }
-        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
-}</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">func</span> <span class="nx">example</span><span class="p">(</span><span class="nx">w</span> <span class="nx">io</span><span class="p">.</span><span class="nx">Writer</span><span class="p">,</span> <span class="nx">buf</span> <span class="nx">bytes</span><span class="p">.</span><span class="nx">Buffer</span><span class="p">)</span> <span class="p">(</span><span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">buf</span><span class="p">.</span><span class="nx">Len</span><span class="p">()</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+                <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">buf</span><span class="p">.</span><span class="nx">ReadByte</span><span class="p">()</span>
+                <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+                        <span class="k">return</span> <span class="nx">err</span> <span class="c1">// declaration of &#34;err&#34; shadows declaration...
+</span><span class="c1"></span>                <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">err</span>
+<span class="p">}</span></code></pre></div>
 <h2 id="improper-usage-of-struct-field-tags-structtags">Improper usage of struct field tags (<code>-structtags</code>)</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Struct</span> <span style="color:#66d9ef">struct</span> {
-        <span style="color:#a6e22e">A</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;a&#34;`</span>
-        <span style="color:#a6e22e">B</span> <span style="color:#66d9ef">int</span> <span style="color:#e6db74">`json:&#34;a&#34;`</span> <span style="color:#75715e">// struct field B repeats json tag &#34;a&#34; also at...
-</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">C</span> <span style="color:#66d9ef">bool</span> <span style="color:#e6db74">`&#34;bad&#34;`</span>   <span style="color:#75715e">// sruct field tag `&#34;bad&#34;` not compatible with reflect.StructTag.Get:
-</span><span style="color:#75715e"></span>                         <span style="color:#75715e">// bad syntax for struct tag key
-</span><span style="color:#75715e"></span>}</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">type</span> <span class="nx">Struct</span> <span class="kd">struct</span> <span class="p">{</span>
+        <span class="nx">A</span> <span class="kt">string</span> <span class="s">`json:&#34;a&#34;`</span>
+        <span class="nx">B</span> <span class="kt">int</span> <span class="s">`json:&#34;a&#34;`</span> <span class="c1">// struct field B repeats json tag &#34;a&#34; also at...
+</span><span class="c1"></span>        <span class="nx">C</span> <span class="kt">bool</span> <span class="s">`&#34;bad&#34;`</span>   <span class="c1">// sruct field tag `&#34;bad&#34;` not compatible with reflect.StructTag.Get:
+</span><span class="c1"></span>                         <span class="c1">// bad syntax for struct tag key
+</span><span class="c1"></span><span class="p">}</span></code></pre></div>
 <h2 id="unreachable-code-a-k-a-dead-code-unreachable">Unreachable code, A.K.A. dead code (<code>-unreachable</code>)</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">simpleMergeError</span>() <span style="color:#66d9ef">int</span> {
-        <span style="color:#a6e22e">a</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;hello&#34;</span>
-        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
-        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;unreachable&#34;</span>) <span style="color:#75715e">// unreachable code
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
-}
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">anotherSimpleMergeError</span>(<span style="color:#a6e22e">a</span> <span style="color:#66d9ef">int</span>) {
-        <span style="color:#66d9ef">switch</span> <span style="color:#a6e22e">a</span> {
-        <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">1</span>:
-                <span style="color:#66d9ef">return</span>
-        <span style="color:#66d9ef">default</span>:
-                <span style="color:#66d9ef">return</span>
-        }
-        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;unreachable&#34;</span>) <span style="color:#75715e">// unreachable code
-</span><span style="color:#75715e"></span>}
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">lessObviousCase</span>() {
-        <span style="color:#66d9ef">for</span> {
-                <span style="color:#66d9ef">for</span> {
-                        <span style="color:#66d9ef">break</span>
-                }
-        }
-        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;unreachable&#34;</span>) <span style="color:#75715e">// unreachable code
-</span><span style="color:#75715e"></span>}</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">func</span> <span class="nx">simpleMergeError</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
+        <span class="nx">a</span> <span class="o">:=</span> <span class="s">&#34;hello&#34;</span>
+        <span class="k">return</span> <span class="mi">0</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&#34;unreachable&#34;</span><span class="p">)</span> <span class="c1">// unreachable code
+</span><span class="c1"></span>        <span class="k">return</span> <span class="mi">1</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nx">anotherSimpleMergeError</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="nx">a</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">return</span>
+        <span class="k">default</span><span class="p">:</span>
+                <span class="k">return</span>
+        <span class="p">}</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&#34;unreachable&#34;</span><span class="p">)</span> <span class="c1">// unreachable code
+</span><span class="c1"></span><span class="p">}</span>
+<span class="kd">func</span> <span class="nx">lessObviousCase</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">{</span>
+                <span class="k">for</span> <span class="p">{</span>
+                        <span class="k">break</span>
+                <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&#34;unreachable&#34;</span><span class="p">)</span> <span class="c1">// unreachable code
+</span><span class="c1"></span><span class="p">}</span></code></pre></div>
   </article>
   <footer class="meta">
     <p>
@@ -203,8 +203,17 @@ It you can also list the optional flags using <code>go tool vet --help</code>.</
       </section>
       <footer class="page-footer">
         
-        <p>&copy; Julien Limoges</p>
         
+          <span>Find me on</span>
+          
+          <a href="https://github.com/limoges"><i class="fa fa-github"></i></a>
+          
+          
+          <a href="https://twitter.com/julienlimoges"><i class="fa fa-twitter"></i></a>
+          
+          
+          <a href="https://www.facebook.com/julienlimoges"><i class="fa fa-facebook-official"></i></a>
+          
         
       </footer>
     </section>

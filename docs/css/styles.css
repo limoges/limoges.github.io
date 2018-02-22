@@ -14,7 +14,6 @@ html, body {
 .page {
   display: flex;
   flex-flow: column wrap;
-  min-height: 100%;
 }
 
 .page-content {
@@ -53,6 +52,12 @@ html, body {
 .page-footer {
   border-top: 1px solid #eee;
   text-align: center;
+  padding: 1em;
+  font-size: 0.9em;
+  color: #888;
+}
+.page-footer a, .page-footer a:visited {
+  color: #1b2cc1;
 }
 
 h1, h2, h3, h4, h5, h6 {
