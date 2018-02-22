@@ -5,10 +5,6 @@ draft = false
 
 +++
 
-# About
-
-{{< figure src="/media/picture.jpg" title="Over the Laber, Germany" class="portrait" >}}
-
 Hi there! My name is Julien. I'm a computer engineer working in software. I 
 occasionally write on different topics I find interesting. I'm originally from 
 [Montreal], but have lived in [Vancouver], [Lyon], [Vienna] and [Munich].
@@ -16,9 +12,13 @@ occasionally write on different topics I find interesting. I'm originally from
 I’m currently doing a small amount of freelance work while working on a small 
 business project I’ve been looking to build.
 
-I am a multilinguist which mostly work with [Golang], but have worked with 
-[Ruby] on the [probably largest rails app][rails] at [Shopify]. I've also worked 
-on [serious][blastr] [mobile][much] [apps][viarail]. 
+I am programmer working mostly with [Golang] but have worked C, C++, Python, Swift, 
+Ruby, Objective-C, etc. I am comfortable in multiple language paradigms
+be it functional, imperative or object-oriented. I love functional languages
+and sometimes dabble in Haskell, Clojure and variants of Lisp.
+
+I've worked on the [probably largest rails app][rails] at [Shopify]. I've also 
+worked on [serious][blastr] [mobile][much] [apps][viarail]. 
 
 I'm pretty good with code but find satisfaction working with teams, developing 
 expertise in our domain and working towards a codebase based on [SOLID]

@@ -4,11 +4,10 @@ title = "Julien Limoges"
 theme = "alpenfrisch"
 publishDir = "docs"
 canonifyURLs = true
-copyright = "Julien Limoges"
+copyright = ""
 
 pygmentsCodeFences = true
-[params]
-description = "Computer engineer, traveler and painter"
+pygmentsUseClasses = true
 
 [author]
   name = "Julien Limoges"
