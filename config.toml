@@ -12,6 +12,8 @@ description = "Computer engineer, traveler and painter"
 
 [author]
   name = "Julien Limoges"
+
+[social]
   github = "https://github.com/limoges"
   linkedin = "https://www.linkedin.com/in/julienlimoges/"
   facebook = "https://www.facebook.com/julienlimoges"
