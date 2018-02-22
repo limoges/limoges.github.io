@@ -2,53 +2,49 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <title>Static code analysis using Go vet</title>
+                                                                         
+    <meta name="description" content="Computer engineer, traveler and painter">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-      
-  Static code analysis using Go tools - Julien Limoges
-
-    </title>
-    <link rel="canonical" href="https://limoges.io/articles/using-golang-static-analysis/">
-    <link rel="stylesheet" href="https://limoges.io/css/alpenfrisch.css">
+                                                                         
+    <link rel="canonical" href="https://limoges.io/posts/using-golang-static-analysis/">
+    <link rel="stylesheet" href="https://limoges.io/css/styles.css">
+    <link rel="stylesheet" href="https://limoges.io/css/syntax.css">
+    <link rel="stylesheet" 
+    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
-    <div id="container">
-      <header id="header">
-        <nav class="navigation">  
-    <a href="https://limoges.io/">Julien Limoges</a>
-    
-    <a href="https://limoges.io/articles/">Articles</a>
-    
-  </ul>
-</nav>
-
+    <section class="page">
+      <header class="page-header">
+        <nav>  
+          <a class="name" href="https://limoges.io/">Julien Limoges</a>
+          
+          <a href="https://limoges.io/posts/">Posts</a>
+          
+        </nav>
       </header>
-      <main id="content">
-      <article>
-    <header>
-      <div class="date">
-        <time class="published">August 23, 2017</time>
-        
-        <time class="edited">Edited on January 2, 2018</time>
-        
-      </div>
-      <h1 class="title">Static code analysis using Go tools</h1>
-      <p class="desc">A look at the kind of problems go&#39;s static analysis tool can detect in your code.</p>
-    </header>
-    <hr>
-    
+      <section class="page-content">
+      
+<article>
+  <header>
+    <h1 class="title">Static code analysis using Go vet</h1>
+    <p>
+      <time>August 23, 2017</time>
+      
+        <time>edited on January 2, 2018</time>
+      
+    </p>
+  </header>
+  <article>
+  
 
-<h3 id="define-vet">define vet</h3>
-
-<pre><code>vet | vɛt |
-  verb (vets, vetting, vetted) [with object]
-  - make a careful and critical examination of (something)
-</code></pre>
-
-<p>If you&rsquo;ve been using Go for a while you might have heard about <code>vet</code>.</p>
+<p>If you&rsquo;ve been using Go for a while you might have heard about <code>vet</code>.
+To vet means to make a careful and critical examination of something. This is
+a pretty good name for what the tool does.</p>
 
 <p>Vet is a pretty interesting tool. For people familiar with <code>gcc</code> based tools, it
-can be compared to the warnings <code>gcc</code> emits.</p>
+can be compared to the warnings <code>gcc</code> emits. It inspects source files and outputs
+recommendation or &ldquo;warnings&rdquo;.</p>
 
 <h1 id="invoking-vet">Invoking vet</h1>
 
@@ -178,13 +174,39 @@ It you can also list the optional flags using <code>go tool vet --help</code>.</
         <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;unreachable&#34;</span>) <span style="color:#75715e">// unreachable code
 </span><span style="color:#75715e"></span>}</code></pre></div>
   </article>
-      </main>
-      <footer id="footer">
+  <footer class="meta">
+    <p>
+    
+      <span>tags:
+      
+        <a href="https://limoges.io/tags/golang">golang</a>
+      
+        <a href="https://limoges.io/tags/go">go</a>
+      
+        <a href="https://limoges.io/tags/vet">vet</a>
+      
+        <a href="https://limoges.io/tags/static">static</a>
+      
+      </span>
+    
+    
+      <span>categories:
+      
+        <a href="https://limoges.io/categories/software">software</a>
+      
+      </span>
+    
+    </p>
+  </footer>
+</article>
+
+      </section>
+      <footer class="page-footer">
         
-<p> Built with <a href="https://gohugo.io">Hugo</a> using my theme <a href="https://github.com/limoges/alpenfrisch">Alpenfrisch</a>.</p>
-
-
+        <p>&copy; Julien Limoges</p>
+        
+        
       </footer>
-    </div>
+    </section>
   </body>
 </html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>A history of encodings before UTF-8</title>
+                                                                         
+    <meta name="description" content="Computer engineer, traveler and painter">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+                                                                         
+    <link rel="canonical" href="https://limoges.io/posts/utf8/">
+    <link rel="stylesheet" href="https://limoges.io/css/styles.css">
+    <link rel="stylesheet" href="https://limoges.io/css/syntax.css">
+    <link rel="stylesheet" 
+    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <section class="page">
+      <header class="page-header">
+        <nav>  
+          <a class="name" href="https://limoges.io/">Julien Limoges</a>
+          
+          <a href="https://limoges.io/posts/">Posts</a>
+          
+        </nav>
+      </header>
+      <section class="page-content">
+      
+<article>
+  <header>
+    <h1 class="title">A history of encodings before UTF-8</h1>
+    <p>
+      <time>October 12, 2009</time>
+      
+    </p>
+  </header>
+  <article>
+  
+
+<p>Google announced this year that UTF-8 had finally overtook all other character
+encoding, accounting for the most used character encoding on the internet.</p>
+
+<p>This is a quite important event for the world, one which may help communication
+across the world. Still not sure? Follow me down the character encoding rabbit
+hole.</p>
+
+<h3 id="the-internet-circa-1999">The internet, circa 1999.</h3>
+
+<p>If you&rsquo;ve used your computer to browse the internet in the last 10 years, you&rsquo;ve
+probably visited a page which had all kinds of weird squigly characters.</p>
+
+<p>If you speak multiple languages, it is likely that you&rsquo;ve experienced it many times.</p>
+
+<p>If you spoke only one language, and that language was not english, you would probably
+have experienced this daily in the past.</p>
+
+<p>Seeing those weird character sequence means one thing: you&rsquo;ve had an experience
+with a wrong character encoding.</p>
+
+<p>Of course if you live in North America and only speak english, these experiences
+would probably have been minimal.</p>
+
+<h3 id="representing-characters">Representing characters</h3>
+
+<p>The issue is simple: how do we represent written characters in a computer. By
+characters, I mean the alphabets, digits, symbols, written and unwritten.</p>
+
+<p>You see, to have characters on a computer, we take a value, say 65 and give it
+a special meaning, say &lsquo;A&rsquo;. That means that when we encounter the value 65 in
+a file or in a transmission, we assume that it means the capital letter A.</p>
+
+<p>Of course, speaking english, we figure out that we only need about a hundred
+symbols to represent english, including numbers and punctuation. Being pragmatic,
+we use the the smallest unit available on most computers, a byte, 8 bits.</p>
+
+<p>What we&rsquo;ve done is build a character encoding. In that encoding, each value maps
+to a particular symbol.</p>
+
+<p>And this is what happened. Systems were built and a standard encoding emerged
+and was used within most computing hardware in North America.</p>
+
+<h3 id="the-internet">The internet</h3>
+
+<p>And then, the internet happened. Suddenly, homogenous networks from all around
+the world were being connected together. Networks with different languages,
+different culture, and so, different encodings.</p>
+
+<p>The people around the world had developed their own encoding to support their
+language and cultures. You see, while there is an alphabet with 26 characters in
+english, there are many languages using characters which are not found in the
+english alphabet.</p>
+
+<p>So while the value 64 in english means &lsquo;A&rsquo;, in another language, it might mean
+something completely different in another language.
+(edit: Turns out, most encodings use the same meaning for the first 127 values.
+The real problems end up presenting themselves in between 127 and 255 for
+&ldquo;European languages&rdquo;.)</p>
+
+<p>And there was the problem. A computer could no longer &ldquo;stupidly&rdquo; look at a number
+and translate it using the table it was using before. Files would need to present
+their encoding first to be read properly. And that&rsquo;s if you had access to the
+encoding referred in the file in the first place.</p>
+
+<p>Being a bit counter-intuitive to most, this process was omitted or relied on
+guesswork, leading to encoding problems.</p>
+
+<h2 id="enter-unicode">Enter unicode</h2>
+
+<p>In the late 80s, a proposal for the creation of an encoding which could be
+used languages and cultures was drafted. This character encoding would be the
+end of encodings, a universal encoding, one encoding to rule them all.</p>
+
+<p>It would use 2 bytes instead of 1 to encode all of the world&rsquo;s characters.
+And this is how the Universal Character Set, UCS-2 was born (2 as in 2 bytes).</p>
+
+<p>Turns out, there were a few problems with UCS-2.
+1. It has some complexity with how it dealt with bits
+2. It isn&rsquo;t large enough to represent all the characters we need.
+3. A good character set might want to be extendable, with newer and older symbols.
+4. For people who only need english characters, every file becomes twice as big.
+(The last point is really petty, in my opinion, but it turns out to be important.)</p>
+
+<p>And this led to a few different encodings to be designed, in order to attempt
+to solve these issues.</p>
+
+<h2 id="utf-8">UTF-8</h2>
+
+<p>One that stuck, was UTF-8. UTF stands for Unicode Transformation Format, 8 bits.</p>
+
+<p>The strength of the design was that unlike other encodings, UTF-8 was a variable
+width character encoding. This means that instead of each symbol being represented
+by a single byte, a UTF-8 symbol would be encoded in a string of multiple bytes.</p>
+
+<p>This was interesting concept because it solved all of the issues at once. And yes,
+english file would not double in space! This very fact probably made the adoption
+of UTF-8 a much bigger success than its compatriot UCS-2.</p>
+
+<h2 id="adoption-in-across-the-world">Adoption in across the world</h2>
+
+<p>There was still a couple problems with UTF-8 adoption in several regions of the world.
+Most notably, the regions which do not use european latin alphabets very much.</p>
+
+<p>While utf-8 is a great technology to communicate across international boudaries,
+it was still considered a hassle for many.</p>
+
+<ol>
+<li><p>Unless one uses many languages in a single file, it is not necessary
+to use UTF-8 to encode that file. Encoding generally support english characters
+and another language, so, unless you wanted, for example, Chinese and French,
+you could just stick to your local encoding.</p></li>
+
+<li><p>Some languages are much more costly to encode than others. For example,
+Chinese can be 3 or 4 bytes per character in UTF-8. This argument was strong enough
+for english speakers to dislike UTF-16, which doubled the file size. Now imagine
+quadrupling the size.</p></li>
+
+<li><p>increases the bandwidth that you must use to transmit when speaking
+one of those more costly languages.</p></li>
+</ol>
+
+<p>To be fair, point 2 and 3 are the same, but they are very important. This is why
+UTF-8 adoption is still a work in progress. While it is very good at encoding
+everything, it isn&rsquo;t free. In many situations where space is at a premium, it
+is much cheaper to just support your local encoding.</p>
+
+<p>Cheers to the success of UTF-8!</p>
+
+  </article>
+  <footer class="meta">
+    <p>
+    
+    
+      <span>categories:
+      
+        <a href="https://limoges.io/categories/computers">computers</a>
+      
+        <a href="https://limoges.io/categories/history">history</a>
+      
+      </span>
+    
+    </p>
+  </footer>
+</article>
+
+      </section>
+      <footer class="page-footer">
+        
+        <p>&copy; Julien Limoges</p>
+        
+        
+      </footer>
+    </section>
+  </body>
+</html>

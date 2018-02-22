@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on Julien Limoges</title>
+    <link>https://limoges.io/tags/docker/</link>
+    <description>Recent content in Docker on Julien Limoges</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-ca</language>
+    <copyright>Julien Limoges</copyright>
+    <lastBuildDate>Mon, 02 Mar 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://limoges.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Virtualization technology and containers</title>
+      <link>https://limoges.io/posts/containers/</link>
+      <pubDate>Mon, 02 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://limoges.io/posts/containers/</guid>
+      <description>The world of software has been hearing about containers, docker, and docker for the past few years.
+Probably to the most promoted and hyped technology since, maybe, the iPhone, one should ask himself, what is Docker?
+(2017: Okay. Microservices, k8s - that&amp;rsquo;s kubernetes for the rest of us, are also strong contenders.)
+Docker is a somewhat recent technology, or tool, to allow building a workload and running that workload on a host of different machines.</description>
+    </item>
+    
+  </channel>
+</rss>

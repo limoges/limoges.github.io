@@ -7,9 +7,55 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-ca</language>
     <copyright>Julien Limoges</copyright>
+    <lastBuildDate>Mon, 02 Mar 2015 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://limoges.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Docker</title>
+      <link>https://limoges.io/tags/docker/</link>
+      <pubDate>Mon, 02 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://limoges.io/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Go</title>
+      <link>https://limoges.io/tags/go/</link>
+      <pubDate>Wed, 23 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://limoges.io/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Golang</title>
+      <link>https://limoges.io/tags/golang/</link>
+      <pubDate>Wed, 23 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://limoges.io/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Static</title>
+      <link>https://limoges.io/tags/static/</link>
+      <pubDate>Wed, 23 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://limoges.io/tags/static/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vet</title>
+      <link>https://limoges.io/tags/vet/</link>
+      <pubDate>Wed, 23 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://limoges.io/tags/vet/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

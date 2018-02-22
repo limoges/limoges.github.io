@@ -1,0 +1,135 @@
+html {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5em;
+  text-align: justify;
+  color: #111;
+}
+
+/* Allowing footer to sit at the bottom */
+html, body {
+  height: 100%;
+}
+
+.page {
+  display: flex;
+  flex-flow: column wrap;
+  min-height: 100%;
+}
+
+.page-content {
+  flex: 1;
+  max-width: 100%;
+}
+
+.page {
+  width: 52em;
+  max-width: 98%;
+  margin: 0 auto;
+}
+
+/* Page header with navigation */
+.page-header {
+  border-bottom: 1px solid #eee;
+}
+
+.page-header nav {
+  padding: 1em 0;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+}
+
+.page-header nav a {
+  margin-left: 0.5em;
+  color: #1b2cc1;
+}
+
+.page-header nav .name {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.page-footer {
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #4357ad;
+}
+
+/* https://coolors.co/d11149-fe9920-4357ad-6610f2-1b2cc1 */
+html { color: #222; }
+a {
+  color: #1b2cc1;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+a:active {
+  color: #fe9920;
+}
+a:visited {
+  color: #6610f2;
+}
+
+pre {
+  background-color: #ddd;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  overflow-x: auto;
+  padding: 1em;
+  word-wrap: normal;
+}
+
+pre code {
+  white-space: pre;
+}
+
+img {
+  margin: 0.5em;
+  margin-bottom: 1em;
+  max-width: 95%;
+  box-shadow: 2px 12px 20px #888;
+}
+
+blockquote {
+  border-left: 3px solid #eee;
+  color: #858585;
+  padding-left: 0.5em;
+}
+
+time {
+  display: inline-block;
+  color: #858585;
+}
+
+.title {
+  font-size: 1.5rem;
+}
+
+.well {
+  border-radius: 2px;
+  border: 1px solid #ebebeb;
+  color: #545454;
+  padding: 0 1em;
+}
+
+.desc {
+  font-style: italic;
+}
+
+.meta {
+  color: #888;
+}
+
+ol, ul {
+  padding-left: 1.25em;
+}
+
+.list-pages {
+  list-style-type: none;
+}
+

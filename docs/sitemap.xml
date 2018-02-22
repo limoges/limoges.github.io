@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://limoges.io/articles/using-golang-static-analysis/</loc>
+    <loc>https://limoges.io/posts/using-golang-static-analysis/</loc>
     <lastmod>2018-01-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -13,17 +13,58 @@
   </url>
   
   <url>
-    <loc>https://limoges.io/articles/</loc>
+    <loc>https://limoges.io/posts/</loc>
     <lastmod>2017-02-05T07:51:49+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://limoges.io/articles/dont-repeat-yourself/</loc>
+    <loc>https://limoges.io/posts/dont-repeat-yourself/</loc>
     <lastmod>2016-11-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
+    <loc>https://limoges.io/posts/containers/</loc>
+    <lastmod>2017-02-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://limoges.io/posts/utf8/</loc>
+    <lastmod>2009-10-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://limoges.io/tags/docker/</loc>
+    <lastmod>2017-02-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://limoges.io/tags/go/</loc>
+    <lastmod>2018-01-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://limoges.io/tags/golang/</loc>
+    <lastmod>2018-01-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://limoges.io/tags/static/</loc>
+    <lastmod>2018-01-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://limoges.io/tags/</loc>
+    <lastmod>2017-02-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://limoges.io/tags/vet/</loc>
+    <lastmod>2018-01-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

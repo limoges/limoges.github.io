@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Go on Julien Limoges</title>
+    <link>https://limoges.io/tags/go/</link>
+    <description>Recent content in Go on Julien Limoges</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-ca</language>
+    <copyright>Julien Limoges</copyright>
+    <lastBuildDate>Wed, 23 Aug 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://limoges.io/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Static code analysis using Go vet</title>
+      <link>https://limoges.io/posts/using-golang-static-analysis/</link>
+      <pubDate>Wed, 23 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://limoges.io/posts/using-golang-static-analysis/</guid>
+      <description>If you&amp;rsquo;ve been using Go for a while you might have heard about vet. To vet means to make a careful and critical examination of something. This is a pretty good name for what the tool does.
+Vet is a pretty interesting tool. For people familiar with gcc based tools, it can be compared to the warnings gcc emits. It inspects source files and outputs recommendation or &amp;ldquo;warnings&amp;rdquo;.
+Invoking vet You can technically use go vet, but its interface is awkward for most.</description>
+    </item>
+    
+  </channel>
+</rss>

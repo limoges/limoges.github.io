@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Virtualization technology and containers</title>
+                                                                         
+    <meta name="description" content="Computer engineer, traveler and painter">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+                                                                         
+    <link rel="canonical" href="https://limoges.io/posts/containers/">
+    <link rel="stylesheet" href="https://limoges.io/css/styles.css">
+    <link rel="stylesheet" href="https://limoges.io/css/syntax.css">
+    <link rel="stylesheet" 
+    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <section class="page">
+      <header class="page-header">
+        <nav>  
+          <a class="name" href="https://limoges.io/">Julien Limoges</a>
+          
+          <a href="https://limoges.io/posts/">Posts</a>
+          
+        </nav>
+      </header>
+      <section class="page-content">
+      
+<article>
+  <header>
+    <h1 class="title">Virtualization technology and containers</h1>
+    <p>
+      <time>March 2, 2015</time>
+      
+        <time>edited on February 4, 2017</time>
+      
+    </p>
+  </header>
+  <article>
+  
+
+<p>The world of software has been hearing about containers, docker, and docker for
+the past few years.</p>
+
+<p>Probably to the most promoted and <strong>hyped</strong> technology since, maybe, the iPhone, one
+should ask himself, what is Docker?</p>
+
+<p><em>(2017: Okay. Microservices, k8s - that&rsquo;s kubernetes for the rest of us, are also
+strong contenders.)</em></p>
+
+<p>Docker is a somewhat recent technology, or tool, to allow <em>building a workload</em> and
+<em>running that workload</em> on a host of different machines.</p>
+
+<p>This technology is key in the era of <strong>everything in the cloud</strong> that we
+live in, where hardware has become a commodity into which software is inserted
+in order to run, similar to washing clothes at a laundromat.</p>
+
+<h2 id="a-little-bit-of-history">A little bit of history</h2>
+
+<p>A few years ago, the commonly accepted methodology for running software in the
+cloud involved running many computers on a single computer.</p>
+
+<p>It involved having a host create a virtual machine (VM) onto which an operating
+system (OS) would be booted in order to run your workload. This methodology was
+the focus of so-called &ldquo;virtualization&rdquo;. This virtualization allowed people who
+owned hardware to rent it to people who would pay for virtual machines of the
+size they desired, depending on their needs.</p>
+
+<p>Many services and tools were built to allow people to jam their application&rsquo;s
+requirement into a box which could then be put to run on the virtual hardware.
+This is how the cloud computing concept emerged. You didn&rsquo;t need to buy hardware,
+you could just pay for what you needed to use, with a certain granularity.</p>
+
+<p>Different vendors had different idea of how they could organize their client&rsquo;s
+software to run onto their hardware, with varying degrees of efficiency and success.
+One thing it did though was that it improved hardware utilization across the board,
+allowing everyone&rsquo;s [coffee machine] to connect to the internet.</p>
+
+<p>That whole machine virtualization had a cost though. It required an hypervisor
+to run on every machine, and a virtual machine to be instantiated for every
+workload. Creating, running and destroying these virtual machines took time and
+resources which meant all of these components had a pretty significant overhead.
+And that overhead was spent for every single workload.</p>
+
+<p>Turns out, most workload were simple web services which spent a lot of time doing
+absolutely nothing. A lot of money was poured into the lucrative virtualization
+business to lower this overhead.</p>
+
+<h2 id="virtualization-using-containers">Virtualization using containers</h2>
+
+<p>Containers are a virtualization technology. They allow running workload on shared
+hardware, but they do so differently. Instead of running an hypervisor to
+isolate workloads on different virtual machines, containers use modern kernel
+sandboxing facilities isolate processes running on the host.</p>
+
+<p>Getting rid of the hypervisor and virtual machines altogether allows much smaller
+resource usage per application. Those applications are set up and torn down much
+faster allowing a much higher number of application to run on the same hardware
+at anytime - application density. As you might imagine, there are pretty solid
+incentives to adopt this kind of technology. Think 10x to 100x of incentives.</p>
+
+<h3 id="okay-now-what-about-docker">Okay, now what about Docker?</h3>
+
+<p>Docker is simply an extension of the Linux Containers (LXC).
+It adds tooling, and provides an API to run processes using LXC technologies.</p>
+
+<p>This means that with Docker, you can create a portable deployment unit, version
+those units (known as containers) and reuse these units.</p>
+
+<p>In essence, Docker is lowering the barrier to using container instead of
+hardware virtualization.</p>
+
+  </article>
+  <footer class="meta">
+    <p>
+    
+      <span>tags:
+      
+        <a href="https://limoges.io/tags/docker">docker</a>
+      
+      </span>
+    
+    
+      <span>categories:
+      
+        <a href="https://limoges.io/categories/history">history</a>
+      
+        <a href="https://limoges.io/categories/software">software</a>
+      
+      </span>
+    
+    </p>
+  </footer>
+</article>
+
+      </section>
+      <footer class="page-footer">
+        
+        <p>&copy; Julien Limoges</p>
+        
+        
+      </footer>
+    </section>
+  </body>
+</html>
